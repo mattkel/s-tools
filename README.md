@@ -1,1 +1,1 @@
-# My configs of [suckless](https://suckless.org) tools I use
+### My configs of [suckless](https://suckless.org) and suckless like programs that I use.
