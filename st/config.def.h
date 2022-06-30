@@ -1,12 +1,13 @@
 // appearance
 static int borderpx = 0; // 7 / 8 / 11
 
-static char *font = "mono:pixelsize=17:antialias=true:autohint=true"; // 14 / 17
+static char *font = "mono:pixelsize=14:antialias=true:autohint=true"; // 15 / 17
+//static char *font = "Whois:pixelsize=20:antialias=true:autohint=true"; // 14 / 17
 static char *font2[] = {
-  "JoyPixels:style=Regular:pixelsize=17:antialias=true:autohint=true" // emoji // 14 / 17
+  "JoyPixels:style=Regular:pixelsize=14:antialias=true:autohint=true" // emoji // 14 / 17
   //"Noto Color Emoji:style=Regular:pixelsize=17:antialias=true:autohint=true" // emoji // 14 / 17
-  "Hack Nerd Font:style=Regular:pixelsize=16:antialias=true:autohint=true", // powerline
-  "Source Han Sans:pixelsize=16" // asian characters
+  "Hack Nerd Font:style=Regular:pixelsize=17:antialias=true:autohint=true", // powerline
+  "Source Han Sans:pixelsize=17" // asian characters
 };
 
 // What program is execed by st depends of these precedence rules:
@@ -74,58 +75,58 @@ char *termname = "st-256color";
 
 unsigned int tabspaces = 8;
 
-// bg opacity
-float alpha = 1;
+// bg opacity 0.86/1
+float alpha = 0.86;
 
 // Terminal colors (16 first used in escape sequence)
 static const char *colorname[] = {
-"#ffffff",
-"#930000",
-"#007c00",
-"#8e4700",
-"#0000aa",
-"#770177",
-"#017777",
 "#000000",
-"#888888",
-"#aa0000",
-"#00aa00",
-"#aa5500",
-"#4646ea",
-"#aa00aa",
-"#00aaaa",
-"#555555",
+"#cc0000",
+"#4e9a06",
+"#c4a000",
+"#3465a4",
+"#75507b",
+"#06989a",
+"#d3d7cf",
+"#555753",
+"#ef2929",
+"#8ae234",
+"#fce84f",
+"#739fcf",
+"#ad7fa8",
+"#34e2e2",
+"#eeeeec",
 
-  [255] = 0,
+[255] = 0,
+"#add8e6",
 "#555555",
-"#586e75",
-"#ffffff",
-"#000000",
+"#1e1e1e",
+"#8ae234",
 };
 
 static const char *altcolorname[] = {
-"#ffffff",
-"#930000",
-"#007c00",
-"#8e4700",
-"#0000aa",
-"#770177",
-"#017777",
-"#666666",
-"#999999",
-"#aa0000",
-"#00aa00",
-"#aa5500",
-"#0000aa",
-"#aa00aa",
-"#00aaaa",
-"#000000",
+"#515151",
+"#ad291f",
+"#005c0c",
+"#653f27",
+"#222bb0",
+"#573482",
+"#942b83",
+"#e4e8e0",
+"#1e1e1e",
+"#ce3125",
+"#008211",
+"#77492d",
+"#2934d3",
+"#6f41a6",
+"#b733a1",
+"#d3d7cf",
 
 [255] = 0,
-"#555555",
 "#add8e6",
+"#1e1e1e",
 "#ffffff",
-"#000000",
+"#555555",
 };
 
 unsigned int defaultcs = 256;
@@ -219,16 +220,16 @@ static char *copyoutput[] = { "/bin/sh", "-c", "st-copyout", "externalpipe", NUL
 
 static Shortcut shortcuts[] = {
 	// mask                     keysym          function        argument
-	{ XK_ANY_MOD,               XK_F11,         swapcolors,     {.i =  0} },
-  { ControlMask,              XK_c,           clipcopy,       {.i =  0} },
-  { ControlMask,              XK_v,           clippaste,      {.i =  0} },
-  { ControlMask|ShiftMask,    XK_K,           zoom,           {.f = +1} },
-  { ControlMask|ShiftMask,    XK_J,           zoom,           {.f = -1} },
-  { ControlMask|MODKEY,       XK_k,           kscrollup,      {.i =  1} },
-  { ControlMask|MODKEY,       XK_j,           kscrolldown,    {.i =  1} },
-  { ControlMask|MODKEY,       XK_i,           externalpipe,   {.v = copyurlcmd } },
-  { ControlMask|MODKEY,       XK_o,           externalpipe,   {.v = openurlcmd } },
-  { ControlMask|MODKEY,       XK_p,           externalpipe,   {.v = copyoutput } },
+	{ XK_ANY_MOD,               XK_F11,         swapcolors,     {.i =  0} }, // swap colorscheme
+  { ControlMask,              XK_c,           clipcopy,       {.i =  0} }, // copy
+  { ControlMask,              XK_v,           clippaste,      {.i =  0} }, // paste
+  { ControlMask|ShiftMask,    XK_K,           zoom,           {.f = +1} }, // increase font size
+  { ControlMask|ShiftMask,    XK_J,           zoom,           {.f = -1} }, // decrease font size 
+  { ControlMask|MODKEY,       XK_k,           kscrollup,      {.i =  1} }, // scroll up
+  { ControlMask|MODKEY,       XK_j,           kscrolldown,    {.i =  1} }, // scroll down
+  { MODKEY,                   XK_i,           externalpipe,   {.v = openurlcmd } }, // dmenu open url 
+  { MODKEY,                   XK_o,           externalpipe,   {.v = copyurlcmd } }, // dmenu copy url
+  { MODKEY,                   XK_p,           externalpipe,   {.v = copyoutput } }, // dmenu copy commands output
 
   // ------ not using ------ //
 	//{ XK_ANY_MOD,               XK_Break,       sendbreak,      {.i =  0} },

@@ -1,6 +1,7 @@
 # slock - simple screen locker
 
 simple screen locker utility for X. 
+- added blur and pixelated patch
 
 ## Requirements
 
